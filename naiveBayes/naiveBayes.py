@@ -1,4 +1,5 @@
 import string, re
+import math
 
 allData = {}
 posData = {}
@@ -27,13 +28,13 @@ counter = 0
 while counter < 5331:
     #70% training
     if 0 <= counter < 3732:
-        trainingData[keyPosData[counter]] = 1
-        trainingData[keyNegData[counter]] = 1
+        trainingData[keyPosData[counter]] = 'pos'
+        trainingData[keyNegData[counter]] = 'neg'
         counter += 1
     #15% development
     elif 3732 <= counter < 4531:
-        developmentData[keyPosData[counter]] = 1
-        developmentData[keyNegData[counter]] = 1
+        developmentData[keyPosData[counter]] = 'pos'
+        developmentData[keyNegData[counter]] = 'neg'
         counter += 1
     #15% test
     elif 4531 <= counter < 5331:
@@ -41,9 +42,14 @@ while counter < 5331:
         testData[keyNegData[counter]] = 1
         counter += 1
 
-print(len(trainingData), len(testData), len(developmentData))
+#print(len(trainingData), len(testData), len(developmentData))
 
 def trainNaiveBayes(D, C):
+    nDoc = len(D)
+    nC = nDoc/2
+    logpriorPcPos = log(nC/nDoc)
+    logpriorPcNeg = log(nC/nDoc)
+    vocabularyD = {}
     return
 
 def testNaiveBayes(testdoc, logprior, loglikelihood, C, V):
