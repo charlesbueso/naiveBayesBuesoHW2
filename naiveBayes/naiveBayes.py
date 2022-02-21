@@ -148,7 +148,6 @@ def trainNaiveBayes(D):
     #log likelihoods
     loglikelihoodPos = {}
     loglikelihoodNeg = {}
-    sumV = 0
 
     for word in vocabularyD:
         countWcPos = 0
@@ -181,7 +180,7 @@ def testNaiveBayes(testdoc, logpriorPos, logpriorNeg, loglikelihoodPos, loglikel
             if word in V:
                 sumCPos = sumCPos * (loglikelihoodPos[word])
                 sumCNeg = sumCNeg * (loglikelihoodNeg[word])
-
+            
         if sumCPos > sumCNeg: classifiedReviews[review] = 'pos'
         elif sumCNeg > sumCPos: classifiedReviews[review] = 'neg'
 
